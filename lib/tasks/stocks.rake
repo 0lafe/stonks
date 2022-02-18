@@ -12,4 +12,9 @@ namespace :stocks do |args|
         StockApi.get_current(ARGV[1])
     end
 
+    desc "seeds db with stock symbols and names" 
+    task :seed => [ :environment ] do
+        StockApi.seed_companies
+    end
+
 end

@@ -50,7 +50,7 @@ export default function Navbar({currentUser}) {
 
     const history = useHistory()
 
-    const settings = currentUser ? ['Profile', 'Logout'] : ['Login', 'Sign up']
+    const settings = currentUser ? ['Profile', 'Go Pro', 'Logout'] : ['Login', 'Sign up']
     const user = currentUser ? "Account" : "Login"
 
     const handleOpenUserMenu = (event) => {
@@ -59,6 +59,7 @@ export default function Navbar({currentUser}) {
 
     const urlMappings = {
         "Profile": "/account",
+        "Go Pro": "/pricings",
         "Logout": "/",
         "Login": "/users/sign_in",
         "Sign up": "/users/sign_up"
@@ -91,7 +92,7 @@ export default function Navbar({currentUser}) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" style={{backgroundColor: 'dimgray'}}>
+            <AppBar position="static" style={{backgroundColor: 'white'}}>
                 <Toolbar>
 
                 <Typography
@@ -107,13 +108,6 @@ export default function Navbar({currentUser}) {
                         Home
                     </Button>
                 </Typography>
-
-                <Search>
-                    <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                    />
-                </Search>
 
                 <Box sx={{ flexGrow: 0 }}>
                     <Button 

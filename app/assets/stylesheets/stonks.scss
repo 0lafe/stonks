@@ -1,0 +1,45 @@
+.stock-header {
+    padding: 1rem;
+}
+
+.stock-graph {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
+    width: 95%;
+    margin: 5rem auto;
+    // -webkit-filter: drop-shadow(-1px 1px 8px red);
+}
+
+.graph-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.tip {
+    background-color: rgb(245,248,250);
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    margin: 1rem auto;
+}
+
+.tip-text {
+    font-family: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.25px;
+    line-height: 28px;
+    text-decoration: unset;
+}
+
+.stock-graph-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+}

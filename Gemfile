@@ -46,3 +46,4 @@ gem 'webpacker', '~> 3.3'
 gem "devise"
 gem "active_model_serializers"
 gem 'faraday'
+gem 'activerecord-import', '~> 1.2'
