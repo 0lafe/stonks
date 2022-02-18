@@ -42,12 +42,17 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, q
         ? <>
         <div className="stock-flex-row">
           <div className="stock-header">
-            <h4>You bought <strong>{quantity}</strong> of this stock for an average of <strong>${averageCost}</strong> a share</h4>
+            <h4>You bought <strong>{quantity}</strong> of this stock for an average of <strong>${averageCost.toFixed(2)}</strong> a share</h4>
           </div>
         </div>
         <div className="stock-flex-row">
           <div className="stock-header">
-            <h4 className={netColor}>Selling your shares now would <strong>{averageCost < stockPrice ? 'Net' : 'Cost'}</strong> you <strong>${(Math.abs(averageCost - stockPrice)).toFixed(2)}</strong></h4>
+            <h4>
+              Selling your shares now would
+                 <span className={netColor}><strong>{averageCost < stockPrice ? ' Net ' : ' Lose '}</strong></span> 
+              you 
+              <span className={netColor}><strong> ${(Math.abs(averageCost - stockPrice)).toFixed(2)}</strong></span> a share
+              </h4>
           </div>
         </div>
     </>
