@@ -5,6 +5,8 @@ import LandingPage from './layouts/LandingPage'
 import Navbar from './layouts/NavBar'
 import helperFetch from './helpers/helperFetch'
 import UserPage from './layouts/UserPage'
+import Dashboard from './material_ui/Dashboard'
+import Pricing from './material_ui/Pricing'
 
 export const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -22,7 +24,10 @@ export const App = (props) => {
       <Navbar currentUser={currentUser}/>
       <Switch>
         <Route exact path="/"> 
-          <LandingPage user={currentUser}/>
+          <Dashboard user={currentUser}/>
+        </Route>
+        <Route exact path="/pricings"> 
+          <Pricing user={currentUser}/>
         </Route>
         <Route exact path="/account"> 
           <UserPage user={currentUser}/> 

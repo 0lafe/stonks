@@ -25,11 +25,25 @@ class StockApi
         url = "#{BASE_URL}stock/symbol?exchange=US&token=#{API_KEY}"
         api_response = Faraday.get(url)
         parsed_response = JSON.parse(api_response.body)
+        binding.pry
         symbols = []
         parsed_response.each do |data|
             symbols << data["symbol"]
         end
         symbols
+    end
+
+    def self.seed_companies
+        url = "#{BASE_URL}stock/symbol?exchange=US&token=#{API_KEY}"
+        api_response = Faraday.get(url)
+        parsed_response = JSON.parse(api_response.body)
+        length = parsed_response.length
+        puts "Saving #{length} companies"
+        companies = []
+        parsed_response.each_with_index do |data, index|
+            companies << { symbol: data["symbol"], name: data["description"] }
+        end
+        Company.import companies
     end
 
 end

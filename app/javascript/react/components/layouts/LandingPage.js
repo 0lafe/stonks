@@ -1,11 +1,9 @@
 import React from "react"
-import LineChartExample from "./LineChart"
 
 const LandingPage = () => {
     return (
         <>
-            <h1>Hello</h1>
-            <LineChartExample />
+            <h1>HOME PAGE</h1>
         </>
     )
 }

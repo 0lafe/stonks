@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, only: [:index, :show]
     resources :stocks, only: [:index, :show]
+    resources :companies, only: [:index, :show]
+    resources :buy_orders, only: [:index, :show]
   end
 
   get "*path", to: "homes#index"
