@@ -24,7 +24,7 @@ const ChartContainer = (props) => {
     }
 
     const handleBuyOrder = (symbol) => {
-        
+        console.log(`Buying ${symbol}`)
     }
 
     return (
@@ -48,6 +48,7 @@ const ChartContainer = (props) => {
                                 companyName={chartData.name}
                                 index={index}
                                 handleRemoveChart={handleRemoveChart}
+                                handleBuyOrder={handleBuyOrder}
                                 key={chartData.symbol}
                             />
                         )
