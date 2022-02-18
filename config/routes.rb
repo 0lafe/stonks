@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :stocks, only: [:index, :show]
     resources :companies, only: [:index, :show]
     resources :buy_orders, only: [:index, :show]
+    resources :sell_orders, only: [:show]
   end
 
   get "*path", to: "homes#index"

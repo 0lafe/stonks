@@ -19,13 +19,18 @@ namespace :demo do |args|
 
     task :run => [ :environment ] do
         total = BuyOrder.count
-        puts "#{total} orders to go through"
-
+        puts "#{total} buy orders to go through"
         BuyOrder.all.each do |order| 
             order.check 
         end
-
         puts "#{total - BuyOrder.count} fufiled!"
+
+        total = SellOrder.count
+        puts "#{total} sell orders to go through"
+        SellOrder.all.each do |order| 
+            order.check 
+        end
+        puts "#{total - SellOrder.count} fufiled!"
     end
 
     task :gen_orders => [ :environment ] do
@@ -39,6 +44,23 @@ namespace :demo do |args|
             end
             puts "user #{index + 1} of 10 done!"
         end
+    end
+
+    task :test => [ :environment ] do
+        user = User.find_by(email: 'admin@mail.com')
+        company = Company.find_by(symbol: 'AAPL')
+        company2 = Company.find_by(symbol: 'GOOGL')
+        Stock.create(user: user, company: company, quantity: 10, initial_value: "10.00")
+        Stock.create(user: user, company: company2, quantity: 10, initial_value: "10000.00")
+    end
+
+    task :clear_data => [ :environment ] do
+        Stock.delete_all
+        BuyOrder.delete_all
+        SellOrder.delete_all
+        User.delete_all
+
+        User.create(email: 'admin@mail.com', password: 'password')
     end
 
 end

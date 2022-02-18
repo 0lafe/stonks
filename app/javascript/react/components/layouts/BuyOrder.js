@@ -18,12 +18,17 @@ const style = {
     p: 4,
 };
 
-export default function TradeSharesModel({ stockName, type }) {
+export default function TradeSharesModel({ stockName, type, currentPrice }) {
     const [open, setOpen] = React.useState(false);
     const [quantity, setQuantity] = React.useState(1)
     const [price, setPrice] = React.useState(0)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    React.useEffect(() => {
+      console.log(currentPrice)
+      setPrice(currentPrice)
+    }, [currentPrice])
 
     const handleQuantityChange = (event, v) => {
         setQuantity(event.target.value)
@@ -34,11 +39,19 @@ export default function TradeSharesModel({ stockName, type }) {
     }
 
     const handlePurchase = () => {
+      if (type === 'buy') {
         helperFetch(`/api/buy_orders/${stockName}?quantity=${quantity}&price=${price}`).then(response => {
-            if (response.status === "Success") {
-              handleClose()
-            }
+          if (response.status === "Success") {
+            handleClose()
+          }
         })
+      } else {
+        helperFetch(`/api/sell_orders/${stockName}?quantity=${quantity}&price=${price}`).then(response => {
+          if (response.status === "Success") {
+            handleClose()
+          }
+        })
+      }
     }
   
     return (

@@ -118,9 +118,7 @@ function PricingContent() {
           Pricing
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p">
-          Quickly build an effective pricing table for your potential customers with
-          this layout. It&apos;s built with default MUI components with little
-          customization.
+        <strong>Invest-Ed</strong> provides education, tools, and support for Premium members for every step in your journey to becoming a stocks trader.
         </Typography>
       </Container>
       {/* End hero unit */}
