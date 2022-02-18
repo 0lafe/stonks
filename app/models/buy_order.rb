@@ -1,17 +1,19 @@
 class BuyOrder < ApplicationRecord
 
     validates :user, presence: true
-    validates :symbol, presence: true
+    validates :company, presence: true
     validates :asking_price, presence: true
     validates :quantity, presence: true
 
     belongs_to :user
+    belongs_to :company
 
     def check
-        price = StockApi.get_current_price(self.symbol)
+        price = self.company.get_current_price
         if price
             if price <= self.asking_price.to_i
-                Stock.create(user: self.user, quantity: self.quantity, initial_value: price)
+                puts "Giving #{self.user.email} #{self.quantity} for #{price}"
+                Stock.create(user: self.user, company: self.company, quantity: self.quantity, initial_value: price)
                 self.delete
             end
         end

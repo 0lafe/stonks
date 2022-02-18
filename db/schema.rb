@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 2022_02_17_203206) do
 
   create_table "buy_orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "symbol", null: false
+    t.bigint "company_id", null: false
     t.string "asking_price", null: false
     t.integer "quantity", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_buy_orders_on_company_id"
     t.index ["user_id"], name: "index_buy_orders_on_user_id"
   end
 
@@ -31,12 +32,13 @@ ActiveRecord::Schema.define(version: 2022_02_17_203206) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.string "symbol", null: false
     t.string "initial_value", null: false
     t.integer "quantity", default: 1, null: false
     t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_stocks_on_company_id"
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 

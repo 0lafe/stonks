@@ -2,8 +2,9 @@ import { Button } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-google-charts';
 import helperFetch from '../helpers/helperFetch'
+import BuyOrder from './BuyOrder';
 
-const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart }) => {
+const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, handleBuyOrder }) => {
   const [chartData, setChartData] = useState([['Days', 'Closed', 'High', 'Low', 'Opened']])
   const [stockPrice, setStockPrice] = useState(0)
   const [stockHistory, setStockHistory] = useState({
@@ -48,15 +49,12 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart })
       <div className="stock-graph-footer">
         <Button 
         variant="outlined" 
+        color="error"
         onClick={() => handleRemoveChart(index)}>
           Remove Graph
         </Button>
 
-        <Button 
-        variant="outlined" 
-        onClick={() => handleRemoveChart(index)}>
-          Buy Order
-        </Button>
+        <BuyOrder stockName={stockName}/>
       </div>
     </div>
   );
