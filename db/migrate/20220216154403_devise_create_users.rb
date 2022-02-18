@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      t.string :balance, null: false
+      t.string :balance, null: false, default: "1000.00"
 
       ## Rememberable
       t.datetime :remember_created_at

@@ -1,0 +1,131 @@
+.form {
+	width: 30%;
+	margin: 0 auto;
+}
+
+.textarea {
+	width: 30%;
+	margin: 0 auto;
+}
+
+.form-text {
+	text-align: center;
+	color: black;
+	margin-top: 1.5rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.button {
+	width: 30%;
+	text-align: center;
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	color: white;
+	background-color: black;
+	padding: 12.24px 14.4px;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+	transition: all 0.35s ease;
+}
+
+.button a {
+	color: white;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+	transition: all 0.35s ease;
+}
+
+.button a:hover {
+	color: black;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.button:hover {
+	background-color: white;
+	color: black;
+	font-size: 1.3rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.button-fix a {
+	width: 30%;
+	text-align: center;
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	color: white;
+	background-color: black;
+	padding: 12.24px 14.4px;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+	transition: all 0.35s ease;
+}
+
+.button-fix a {
+	color: white;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.button-fix a:hover {
+	color: black;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.button-fix a:hover {
+	background-color: white;
+	color: black;
+	font-size: 1.3rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.submit-button {
+	width: 30%;
+	text-align: center;
+	margin: 0 auto;
+	color: white;
+	background-color: #00000047;
+	padding: 12.24px 14.4px;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+	-webkit-transition: color 0.5s ease-out;
+	-moz-transition: color 0.5s ease-out;
+	-o-transition: color 0.5s ease-out;
+	-ms-transition: color 0.5s ease-out;
+	transition: color 0.5s ease-out;
+	border: none;
+}
+
+.submit-button:hover {
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}
+
+.edit-button {
+	width: 30%;
+	text-align: center;
+	margin: 0rem 31.5rem 5px 0.5rem;
+	color: black;
+	background-color: #000000;
+	padding: 12.24px 14.4px;
+	font-size: 1rem;
+	font-family: "Open sans", sans-serif;
+}
+
+.edit-button a {
+	color: black;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+}

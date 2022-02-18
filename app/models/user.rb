@@ -42,4 +42,12 @@ class User < ApplicationRecord
     net
   end
 
+  def reduce_balance(price)
+    self.update(balance: (self.balance.to_f - price).to_s)
+  end
+
+  def increase_balance(price)
+    self.update(balance: (self.balance.to_f + price).to_s)
+  end
+
 end

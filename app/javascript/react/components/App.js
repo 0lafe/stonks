@@ -7,6 +7,7 @@ import helperFetch from './helpers/helperFetch'
 import UserPage from './layouts/UserPage'
 import Dashboard from './material_ui/Dashboard'
 import Pricing from './material_ui/Pricing'
+import Album from './index/Album'
 
 export const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -24,7 +25,7 @@ export const App = (props) => {
       <Navbar currentUser={currentUser}/>
       <Switch>
         <Route exact path="/"> 
-          <Dashboard user={currentUser}/>
+          <Album user={currentUser}/>
         </Route>
         <Route exact path="/pricings"> 
           <Pricing user={currentUser}/>

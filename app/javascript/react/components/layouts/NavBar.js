@@ -94,7 +94,6 @@ export default function Navbar({currentUser}) {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{backgroundColor: 'white'}}>
                 <Toolbar>
-
                 <Typography
                     variant="h6"
                     noWrap
@@ -103,11 +102,15 @@ export default function Navbar({currentUser}) {
                 >
                     <Button
                         onClick={() => redirectFunc('/')}
-                        sx={{ color: 'white', display: 'block' }}
+                        sx={{ color: 'black', display: 'block' }}
                     >
-                        Home
+                        Invest-Ed
                     </Button>
                 </Typography>
+
+                <span style={{color: 'black', marginRight: '10px'}}>
+                    {currentUser ? `$${currentUser.display_balance.toFixed(2)}` : ""}
+                </span>
 
                 <Box sx={{ flexGrow: 0 }}>
                     <Button 

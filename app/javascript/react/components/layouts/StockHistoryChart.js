@@ -35,7 +35,7 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, q
     <div className="stock-graph">
       <div className="stock-flex-row">
         <div className="stock-header">
-          <h4 >The current price of {companyName} ({stockName}) is ${stockPrice}</h4>
+          <h4 >The current price of {companyName} ({stockName}) is ${stockPrice.toFixed(2)}</h4>
         </div>
       </div>
       {quantity > 0 
@@ -74,10 +74,10 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, q
         </Button>
 
         {quantity > 0 
-        ? <TradeSharesModel stockName={stockName} type="sell"/>
+        ? <TradeSharesModel stockName={stockName} type="sell" currentPrice={stockPrice}/>
         : null}
 
-        <TradeSharesModel stockName={stockName} type="buy"/>
+        <TradeSharesModel stockName={stockName} type="buy" currentPrice={stockPrice}/>
       </div>
     </div>
   );
