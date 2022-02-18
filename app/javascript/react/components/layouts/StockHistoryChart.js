@@ -2,9 +2,9 @@ import { Button } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-google-charts';
 import helperFetch from '../helpers/helperFetch'
-import BuyOrder from './BuyOrder';
+import TradeSharesModel from './BuyOrder';
 
-const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, handleBuyOrder }) => {
+const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, quantity, averageCost }) => {
   const [chartData, setChartData] = useState([['Days', 'Closed', 'High', 'Low', 'Opened']])
   const [stockPrice, setStockPrice] = useState(0)
   const [stockHistory, setStockHistory] = useState({
@@ -13,6 +13,9 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, h
     l: [],
     o: []
   });
+
+  const gains = ( stockPrice > averageCost )
+  const netColor = gains ? "stock-net" : "stock-loss"
 
   useEffect(() => {
     helperFetch(`/api/stocks/${stockName}`).then(replyData => {
@@ -30,14 +33,25 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, h
 
   return (
     <div className="stock-graph">
-      <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
+      <div className="stock-flex-row">
         <div className="stock-header">
-          <h4>The {companyName} ({stockName}) price is ${stockPrice}</h4>
-        </div>
-        <div className="stock-header">
-          <h4>History of the {companyName} ({stockName}) stock</h4>
+          <h4 >The current price of {companyName} ({stockName}) is ${stockPrice}</h4>
         </div>
       </div>
+      {quantity > 0 
+        ? <>
+        <div className="stock-flex-row">
+          <div className="stock-header">
+            <h4>You bought <strong>{quantity}</strong> of this stock for an average of <strong>${averageCost}</strong> a share</h4>
+          </div>
+        </div>
+        <div className="stock-flex-row">
+          <div className="stock-header">
+            <h4 className={netColor}>Selling your shares now would <strong>{averageCost < stockPrice ? 'Net' : 'Cost'}</strong> you <strong>${(Math.abs(averageCost - stockPrice)).toFixed(2)}</strong></h4>
+          </div>
+        </div>
+    </>
+      : null}
       <Chart
         chartType="LineChart"
         data={chartData}
@@ -54,7 +68,11 @@ const StockHistoryChart = ({ stockName, companyName, index, handleRemoveChart, h
           Remove Graph
         </Button>
 
-        <BuyOrder stockName={stockName}/>
+        {quantity > 0 
+        ? <TradeSharesModel stockName={stockName} type="sell"/>
+        : null}
+
+        <TradeSharesModel stockName={stockName} type="buy"/>
       </div>
     </div>
   );

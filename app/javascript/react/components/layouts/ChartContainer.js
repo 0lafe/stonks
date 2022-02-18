@@ -3,8 +3,25 @@ import MuiAutocomplete from "../helpers/MuiAutoComplete"
 import StockHistoryChart from "./StockHistoryChart"
 
 
-const ChartContainer = (props) => {
+const ChartContainer = ({ user }) => {
     const [charts, setCharts] = useState([])
+
+    useEffect(() => {
+        if (user) {
+            if (user.stock_display) {
+                setCharts(user.stock_display.map(stock => {
+                    return (
+                        {
+                            symbol: stock.symbol,
+                            name: stock.name,
+                            quantity: stock.quantity,
+                            averageCost: stock.cost
+                        }
+                    )
+                }))
+            }
+        }
+    }, [user])
 
     const handleNewStock = (event, input) => {
         if (event.type === "click" && input) {
@@ -12,6 +29,8 @@ const ChartContainer = (props) => {
                 {
                     symbol: input.symbol,
                     name: input.name,
+                    quantity: 0,
+                    averageCost: 0
                 }
             ]))
         }
@@ -23,21 +42,13 @@ const ChartContainer = (props) => {
         setCharts(chartsI)
     }
 
-    const handleBuyOrder = (symbol) => {
-        console.log(`Buying ${symbol}`)
-    }
-
     return (
         <>
             <div className="center-div">
-                <h1 className="landing-title">Companies You Follow</h1>
-                <div className="tip">
+                <h1 className="landing-title">Stocks You Own</h1>
+                <div className="tip stock-flex-row-space">
                     <p className="tip-text">Find your <strong>stock</strong> with search to see the data</p>
-
-                </div>
-
-                <div className="add-stock">
-                    <MuiAutocomplete label="Companies" callback={handleNewStock}/>
+                    <MuiAutocomplete label="Add Companies" callback={handleNewStock}/>
                 </div>
 
                 <div className="graph-container">
@@ -48,7 +59,8 @@ const ChartContainer = (props) => {
                                 companyName={chartData.name}
                                 index={index}
                                 handleRemoveChart={handleRemoveChart}
-                                handleBuyOrder={handleBuyOrder}
+                                quantity={chartData.quantity}
+                                averageCost={chartData.averageCost}
                                 key={chartData.symbol}
                             />
                         )

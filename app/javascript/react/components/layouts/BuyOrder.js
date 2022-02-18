@@ -18,7 +18,7 @@ const style = {
     p: 4,
 };
 
-export default function BuyOrder({ stockName }) {
+export default function TradeSharesModel({ stockName, type }) {
     const [open, setOpen] = React.useState(false);
     const [quantity, setQuantity] = React.useState(1)
     const [price, setPrice] = React.useState(0)
@@ -34,9 +34,7 @@ export default function BuyOrder({ stockName }) {
     }
 
     const handlePurchase = () => {
-        // console.log(`NICE! you bought ${quantity} ${stockName} stocks for ${price}`)
         helperFetch(`/api/buy_orders/${stockName}?quantity=${quantity}&price=${price}`).then(response => {
-            console.log(response)
             if (response.status === "Success") {
               handleClose()
             }
@@ -45,12 +43,21 @@ export default function BuyOrder({ stockName }) {
   
     return (
       <div>
+        {type === "buy"
+        ?         
         <Button 
         onClick={handleOpen}
         variant="outlined" 
         color="success">
             Buy Stock
         </Button>
+        :         
+        <Button 
+        onClick={handleOpen}
+        variant="outlined">
+            Sell Stock
+        </Button>}
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -59,7 +66,7 @@ export default function BuyOrder({ stockName }) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Buying {stockName} stock
+              {type === "buy" ? 'Buying' : 'Selling'} {stockName} stock
             </Typography>
 
             <div className={'stock-graph-footer'}>
@@ -73,7 +80,7 @@ export default function BuyOrder({ stockName }) {
 
             <div className={'stock-graph-footer'}>
                 <Button onClick={handlePurchase} color="success" variant="outlined" >
-                Create Buy Order
+                Create {type === "buy" ? 'Buy' : 'Sell'} Order
                 </Button>
 
                 <Button onClick={handleClose} color="error" variant="outlined" >

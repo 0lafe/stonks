@@ -5,7 +5,7 @@ import ChartContainer from "./ChartContainer"
 const UserPage = ({ user }) => {
     return (
         <>
-            <ChartContainer />
+            <ChartContainer user={user}/>
         </>
     )
 }

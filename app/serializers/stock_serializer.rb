@@ -1,4 +1,4 @@
 class StockSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :company, :quantity, :initial_value
 end
   

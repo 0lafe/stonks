@@ -7,14 +7,37 @@ class User < ApplicationRecord
   has_many :stocks
   has_many :buy_orders
 
+  def stock_display
+    stocks = {}
+    self.stocks.each do |stock|
+      symbol = stock.company.symbol
+      quantity = stock.quantity
+      if stocks[symbol]
+        stocks[symbol] = { 
+          quantity: stocks[symbol] + quantity,
+          cost: stocks[cost] + stock.initial_value.to_f * quantity
+        }
+      else
+        stocks[symbol] = { 
+          quantity: quantity, 
+          cost: stock.initial_value.to_f * quantity,
+          name: stock.company.name,
+          symbol: symbol
+        }
+      end
+    end
+    output = []
+    stocks.keys.each do |key|
+      stocks[key][:cost] = stocks[key][:cost] / stocks[key][:quantity]
+      output << stocks[key]
+    end
+    output
+  end
+
   def get_net
     net = 0
     self.stocks.all.each { |stock| net += stock.net }
     net
-  end
-
-  def hello
-    puts "hello"
   end
 
 end
