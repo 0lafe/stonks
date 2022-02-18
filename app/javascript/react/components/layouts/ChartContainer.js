@@ -8,6 +8,7 @@ const ChartContainer = ({ user }) => {
 
     useEffect(() => {
         if (user) {
+            console.log(user)
             if (user.stock_display) {
                 setCharts(user.stock_display.map(stock => {
                     return (

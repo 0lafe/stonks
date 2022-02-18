@@ -14,8 +14,10 @@ class User < ApplicationRecord
       quantity = stock.quantity
       if stocks[symbol]
         stocks[symbol] = { 
-          quantity: stocks[symbol] + quantity,
-          cost: stocks[cost] + stock.initial_value.to_f * quantity
+          quantity: stocks[symbol][:quantity] + quantity,
+          cost: stocks[symbol][:cost] + stock.initial_value.to_f * quantity,
+          name: stocks[symbol][:name],
+          symbol: symbol
         }
       else
         stocks[symbol] = { 
