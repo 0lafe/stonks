@@ -12,9 +12,9 @@ export const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
-    helperFetch('api/users').then(user => {
-      if (user.email) {
-        setCurrentUser(user)
+    helperFetch('api/users').then(reply => {
+      if (reply.user) {
+        setCurrentUser(reply.user)
       }
     })
   }, [])

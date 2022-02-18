@@ -2,13 +2,29 @@
     padding: 1rem;
 }
 
+.stock-flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.stock-flex-row-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stock-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .stock-graph {
     border: 1px solid black;
     border-radius: 0.5rem;
     box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
     width: 95%;
     margin: 5rem auto;
-    // -webkit-filter: drop-shadow(-1px 1px 8px red);
 }
 
 .graph-container {
@@ -46,4 +62,12 @@
 
 .buy-order-field {
     padding: 4px;
+}
+
+.stock-net {
+    text-shadow: 1px 1px 8px rgba(62, 106, 168, .8);
+}
+
+.stock-loss {
+    text-shadow: 2px 2px 8px 0 #d94e5c;
 }
