@@ -4,8 +4,6 @@ namespace :demo do |args|
         User.delete_all
         Stock.delete_all
 
-        # User.create(email: "admin@mail.com", password: "password")
-
         i = 0
         10.times do
             User.create(email: "#{i}@mail.com", password: "password")
