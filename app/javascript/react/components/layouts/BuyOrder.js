@@ -26,7 +26,6 @@ export default function TradeSharesModel({ stockName, type, currentPrice }) {
     const handleClose = () => setOpen(false);
 
     React.useEffect(() => {
-      console.log(currentPrice)
       setPrice(currentPrice)
     }, [currentPrice])
 
