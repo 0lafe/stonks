@@ -24,6 +24,9 @@ module RailsBoilerplate
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.middleware.use ActionDispatch::Cookies    
+    config.middleware.use ActionDispatch::Session::CookieStore
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
