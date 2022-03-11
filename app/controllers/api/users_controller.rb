@@ -1,11 +1,7 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < SecuredController
 
     def index
-        if current_user
-            render json: current_user
-        else
-            render json: {}
-        end
+        render json: { Authorized: "Success" }
     end
 
     def show

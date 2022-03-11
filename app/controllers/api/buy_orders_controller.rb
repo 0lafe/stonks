@@ -5,6 +5,7 @@ class Api::BuyOrdersController < ApplicationController
     end
 
     def show
+        binding.pry
         order = BuyOrder.new(
             user: current_user, 
             company: Company.find_by(symbol: params[:id]), 
